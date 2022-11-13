@@ -1,5 +1,5 @@
 # Projeto PORT SCANNER
-Ferramenta implementada para mapear portas TCP
+Ferramenta implementada para mapear portas TCP IP
 
 ## Tecnologias e ferramentas utilizadas :robot:
 

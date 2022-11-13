@@ -1,17 +1,24 @@
+# Biblioteca para comunicação da placa de rede
 
 import socket
 
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.settimeout(0.05)
+IP = input("Digite o host ou ip a ser verificado: ")
 
-IP = input("Digite o host ou ip: ")
-PORT = int(input("Qual é a porta a ser mapeada ? "))
+ports = []
+count = 0
 
-code = client.connect_ex((IP, PORT))
+while count < 10:
+    ports.append(int(input("Qual é a porta a ser mapeada? ")))
+    count += 1
 
-if code == 0:
-    print("Porta Aberta")
-else:
-    print("Porta Fechada")
+for port in ports:
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client.settimeout(0.05)
+    code = client.connect_ex((IP, port))
 
+    if code == 0:
+        print(str(port), " -> Porta Aberta")
+    else:
+        print(str(port), " -> Porta Fechada")
 
+print("Scan Finalizado !")
